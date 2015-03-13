@@ -138,4 +138,10 @@ task "console" do
   exec "irb -r./config/environment"
 end
 
+begin
+  require 'rspec/core/rake_task'
+  RSpec::Core::RakeTask.new(:spec)
+rescue LoadError
+end
+
 task :default  => :spec
