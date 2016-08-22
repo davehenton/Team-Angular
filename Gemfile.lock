@@ -56,7 +56,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.2.0)
     rspec-support (3.2.0)
-    shotgun (0.9)
+    shotgun (0.9.1)
       rack (>= 1.0)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
@@ -82,16 +82,16 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord (~> 4.1)
-  activesupport (~> 4.1)
+  activerecord (~> 4.2.0)
+  activesupport (~> 4.2.0)
   capybara
   factory_girl
   faker
   pg
   rack-test
   rake
-  rspec
-  shotgun
+  rspec (~> 3.0)
+  shotgun (~> 0.9.1)
   shoulda-matchers
   sinatra
   sinatra-contrib
