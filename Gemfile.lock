@@ -16,6 +16,7 @@ GEM
       tzinfo (~> 1.1)
     arel (6.0.0)
     backports (3.6.4)
+    bcrypt (3.1.11)
     builder (3.2.2)
     capybara (2.4.4)
       mime-types (>= 1.16)
@@ -26,7 +27,7 @@ GEM
     diff-lcs (1.2.5)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
-    faker (1.4.3)
+    faker (1.6.6)
       i18n (~> 0.5)
     i18n (0.7.0)
     json (1.8.2)
@@ -84,6 +85,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord (~> 4.2.0)
   activesupport (~> 4.2.0)
+  bcrypt
   capybara
   factory_girl
   faker
@@ -97,4 +99,4 @@ DEPENDENCIES
   sinatra-contrib
 
 BUNDLED WITH
-   1.11.2
+   1.13.0

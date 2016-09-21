@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 # PostgreSQL driver
 gem 'pg'
+gem 'bcrypt'
 
 # Sinatra driver
 gem 'sinatra', '~> 1.0'
@@ -11,7 +12,7 @@ gem 'activesupport', '~>4.2.0'
 gem 'activerecord', '~>4.2.0'
 
 gem 'rake'
-
+gem 'faker'
 gem 'shotgun', '~>0.9.1'
 
 group :test do
@@ -23,5 +24,5 @@ end
 
 group :test, :development do
   gem 'factory_girl'
-  gem 'faker'
+
 end
