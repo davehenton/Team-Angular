@@ -1,8 +1,8 @@
- <% @questions.each do |post| %>
+ <% @questions.each do |question| %>
 
-<%= question.title %>
-<%= question.content %>
-<%= question.author %>
+<%= question.title %><br>
+<%= question.content %><br>
+<%= question.author.username %><br>
 
 <% end %>
 
