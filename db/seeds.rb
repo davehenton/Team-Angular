@@ -10,13 +10,13 @@ Vote.destroy_all
   user = User.new(username: Faker::GameOfThrones.character, email: Faker::Internet.email)
   user.password = "password"
   user.save
-  question = Question.create(title: Faker::Hipster.sentence, content: Faker::Hipster.paragraphs)
+  question = Question.create(title: Faker::Hipster.sentence, content: Faker::Hipster.paragraph)
 end
 
 Question.all.each do |question|
   question.author = User.all.sample
   2.times { question.responses << Response.create(content: Faker::Hipster.words) }
-  5.times { question.answers << Answer.create(content: Faker::Hipster.paragraphs) }
+  5.times { question.answers << Answer.create(content: Faker::Hipster.paragraph) }
   rand(5).times { question.votes << Vote.create }
   question.save
 end
