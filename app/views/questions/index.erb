@@ -5,6 +5,7 @@
   <h3><%= question.title %></a></h3>
   <%= question.author.username %><br>
   <%= question.created_at %><br>
+  Votes: <%= question.votes.where(upvote?: true).count - question.votes.where(upvote?: false).count %>
 <% end %>
 
 <h3>Submit a Question!</h3>
