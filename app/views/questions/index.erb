@@ -1,10 +1,14 @@
+ <h1>DBC Overflow</h1>
+
  <% @questions.each do |question| %>
 
-<a href="/questions/<%=question.id%>"><%= question.title %></a><br>
+<a href="/questions/<%=question.id%>">
+<h3><%= question.title %></a></h3>
 <%= question.author.username %><br>
+<%= question.created_at %><br>
 
 <% end %>
 
 
-   
+
 
