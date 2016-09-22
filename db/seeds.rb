@@ -15,7 +15,7 @@ end
 
 Question.all.each do |question|
   question.author = User.all.sample
-  2.times { question.responses << Response.create(content: Faker::Hipster.words) }
+  2.times { question.responses << Response.create(content: Faker::Hipster.word) }
   5.times { question.answers << Answer.create(content: Faker::Hipster.paragraph) }
   rand(5).times { question.votes << Vote.create }
   question.save
@@ -23,7 +23,7 @@ end
 
 Answer.all.each do |answer|
   answer.answerer = User.all.sample
-  2.times { answer.responses << Response.create(content: Faker::Hipster.words) }
+  2.times { answer.responses << Response.create(content: Faker::Hipster.word) }
   rand(5).times { answer.votes << Vote.create }
   answer.save
 end

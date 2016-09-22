@@ -1,0 +1,40 @@
+<h1> <%= @question.title %> </h1>
+  <%= @question.content %><br>
+  <%= @question.author.username %><br>
+  <%= @question.created_at %><br>
+  <%= @question.votes.count %><br>
+  <h2>Question responses</h2>
+  <% @question.responses.each do |response| %>
+    <p>
+    <%= response.content %><br>
+    <%= response.responder.username %><br>
+    <%= response.created_at  %><br>
+    <%= response.votes.count %>
+    </p>
+  <% end %>
+<h2>Answers</h2>
+
+<% @question.answers.each do |answer| %>
+  <h3>answer</h3>
+
+  <%= answer.content %><br>
+  <%= answer.answerer.username %><br>
+  <%= answer.created_at %><br>
+  <%= answer.votes.count %><br>
+  <h4>Responses</h4>
+  <% answer.responses.each do |response| %>
+    <p>
+    <%= response.content %><br>
+    <%= response.responder.username %><br>
+    <%= response.created_at  %><br>
+    <%= response.votes.count %>
+    </p>
+  <% end %>
+<% end %>
+
+<h3>Submit an Answer</h3>
+<form action="/questions/<%= @question.id %>/answers" method="POST">
+<textarea name="content" rows="10" cols="50"></textarea>
+<input type="submit" name="submit">
+</form>
+
