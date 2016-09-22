@@ -6,7 +6,6 @@ post '/sessions/new' do
   @user = User.authenticate(params[:email], params[:password])
   if @user
     login(@user)
-
     redirect "/users/#{@user.id}"
   else
     @error = "Email or password incorrect!"
