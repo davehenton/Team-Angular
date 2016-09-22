@@ -3,7 +3,12 @@
   <%= @question.author.username %><br>
   <%= @question.created_at %><br>
   <%= @question.votes.where(upvote?: true).count - @question.votes.where(upvote?: false).count %>
-  <form
+  <form action="/questions/<%= @question.id %>/upvotes" method="post">
+    <input type="submit" value="Upvote">
+  </form>
+  <form action="/questions/<%= @question.id %>/downvotes" method="post">
+    <input type="submit" value="Downvote">
+  </form>
 
   <h2>Question Responses</h2>
   <% @question.responses.each do |response| %>
@@ -23,6 +28,12 @@
   <%= answer.answerer.username %><br>
   <%= answer.created_at %><br>
   <%= answer.votes.where(upvote?: true).count - answer.votes.where(upvote?: false).count %>
+   <form action="/questions/<%=@question.id%>/answers/<%= answer.id %>/upvotes" method="post">
+        <input type="submit" value="Upvote">
+        </form>
+      <form action="/questions/<%=@question.id%>/answers/<%= answer.id %>/downvotes" method="post">
+        <input type="submit" value="Downvote">
+    </form>
   <h4>Answer Responses</h4>
   <% answer.responses.each do |response| %>
     <p>
@@ -31,6 +42,12 @@
     <%= response.created_at  %><br>
     <%= response.votes.where(upvote?: true).count - response.votes.where(upvote?: false).count %>
     </p>
+      <form action="/questions/<%=@question.id%>/responses/<%= response.id %>/upvotes" method="post">
+        <input type="submit" value="Upvote">
+        </form>
+      <form action="/questions/<%=@question.id%>/responses/<%= response.id %>/downvotes" method="post">
+        <input type="submit" value="Downvote">
+      </form>
   <% end %>
 <% end %>
 
