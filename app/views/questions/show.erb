@@ -16,7 +16,6 @@
 
 <% @question.answers.each do |answer| %>
   <h3>Answer</h3>
-
   <%= answer.content %><br>
   <%= answer.answerer.username %><br>
   <%= answer.created_at %><br>
@@ -27,8 +26,8 @@
     <%= response.content %><br>
     <%= response.responder.username %><br>
     <%= response.created_at  %><br>
-    <%= response.votes.count %>
-    </p>
+    <%= response.votes.count %><br>
+    <a href="/answers/<%= answer.id%>/responses/new">Respond</a><br>
   <% end %>
 <% end %>
 

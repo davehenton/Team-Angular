@@ -6,11 +6,15 @@ end
 
 
 get '/answers/:answer_id/responses/new' do 
+  p "*" * 1000
+  p params
   @answer = Answer.find(params[:answer_id])
   erb :'responses/new'
 end
 
 post '/answers/:answer_id/responses' do 
+  p "*" * 1000
+  p params
   @answer = Answer.find(params[:answer_id])
   @response = @answer.responses.new(params[:response])
   if @response.save
