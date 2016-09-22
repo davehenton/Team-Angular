@@ -10,6 +10,11 @@
     <input type="submit" value="Downvote">
   </form>
 
+  <form method="post" action="/questions/<%= @question.id %>/responses">
+  <input type="text" name="content" placeholder="response">
+  <input type="submit" value="submit response">
+</form>
+
   <h2>Question Responses</h2>
   <% @question.responses.each do |response| %>
     <p>
@@ -40,6 +45,12 @@
       <form action="/questions/<%=@question.id%>/answers/<%= answer.id %>/downvotes" method="post">
         <input type="submit" value="Downvote">
     </form>
+
+    <form method="post" action="/questions/<%= @question.id  %>/answers/<%= answer.id %>/responses">
+  <input type="text" name="content" placeholder="response">
+  <input type="submit" value="submit response">
+  </form>
+
   <h4>Answer Responses</h4>
   <% answer.responses.each do |response| %>
     <p>

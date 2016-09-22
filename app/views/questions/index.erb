@@ -1,10 +1,20 @@
- <% @questions.each do |question| %>
+ <h1>DBC Overflow</h1>
 
-<a href="/questions/<%=question.id%>"><%= question.title %></a><br>
-<%= question.author.username %><br>
-
+ <% @questions.reverse.each do |question| %>
+  <a href="/questions/<%=question.id%>">
+  <h3><%= question.title %></a></h3>
+  <%= question.author.username %><br>
+  <%= question.created_at %><br>
 <% end %>
 
+<h3>Submit a Question!</h3>
 
-   
+<form action="/questions" method="POST">
+  <input type="text" name="title" placeholder="Title"><br>
+  <textarea name="content" rows="10" cols="50"></textarea><br>
+  <input type="submit" name="submit">
+</form>
+
+
+
 

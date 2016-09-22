@@ -24,8 +24,8 @@ get '/users/:id' do
 end
 
 
-get '/users/delete' do
-  User.find(session[:user_id]).destroy
-  session[:user_id] = nil
-  redirect '/'
-end
+# get '/users/delete' do
+#   User.find(session[:user_id]).destroy
+#   session[:user_id] = nil
+#   redirect '/'
+# end
