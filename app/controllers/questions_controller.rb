@@ -22,9 +22,11 @@ end
 
 post '/questions' do
   if current_user
-    current_user.questions << Question.create(title: params[:title], content: params[:content]) #create new question
+    question = Question.create(title: params[:title], content: params[:content]) #create new question
+    current_user.questions << question
+    current_user.save
   end
- redirect '/questions'
+ redirect "/questions/#{question.id}"
 end
 
 
