@@ -6,7 +6,7 @@
   <form class="upvote" id="question-upvote" action="/questions/<%= @question.id %>/upvotes" method="post">
     <input type="submit" value="Upvote">
   </form>
-  <form class="downvote" action="/questions/<%= @question.id %>/downvotes" method="post">
+  <form class="downvote" id="question-downvote" action="/questions/<%= @question.id %>/downvotes" method="post">
     <input type="submit" value="Downvote">
   </form>
 

@@ -4,10 +4,11 @@ $(document).ready(function() {
   // when we try to bind to them
 
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
-  upvoteListener();
+  questionUpvoteListener();
+  questionDownvoteListener();
 });
 
-var upvoteListener = function(){
+var questionUpvoteListener = function(){
   $("#question-upvote").submit(function(e){
    e.preventDefault();
 
@@ -23,5 +24,23 @@ var upvoteListener = function(){
    request.done(function(responseData){
     upvoteBtn.siblings("#question_votes_count").text(responseData);
   })
-});
+ });
+};
+
+var questionDownvoteListener = function(){
+  $("#question-downvote").submit(function(e){
+   e.preventDefault();
+
+   var downvoteBtn = $(this);
+   var formURL = downvoteBtn.attr('action');
+
+   var request = $.ajax({
+    url: formURL,
+    method: 'post'
+  });
+
+   request.done(function(responseData){
+    downvoteBtn.siblings("#question_votes_count").text(responseData);
+  })
+ });
 };
