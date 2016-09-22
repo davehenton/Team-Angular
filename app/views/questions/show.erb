@@ -3,7 +3,7 @@
   <%= @question.author.username %><br>
   <%= @question.created_at %><br>
   <%= @question.votes.count %><br>
-  <h2>Question responses</h2>
+  <h2>Question Responses</h2>
   <% @question.responses.each do |response| %>
     <p>
     <%= response.content %><br>
@@ -15,13 +15,13 @@
 <h2>Answers</h2>
 
 <% @question.answers.each do |answer| %>
-  <h3>answer</h3>
+  <h3>Answer</h3>
 
   <%= answer.content %><br>
   <%= answer.answerer.username %><br>
   <%= answer.created_at %><br>
   <%= answer.votes.count %><br>
-  <h4>Responses</h4>
+  <h4>Answer Responses</h4>
   <% answer.responses.each do |response| %>
     <p>
     <%= response.content %><br>

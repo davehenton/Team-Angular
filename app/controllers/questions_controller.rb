@@ -5,24 +5,24 @@ end
 
 
 get '/questions' do
-  @questions = Question.all 
-  erb :'questions/index' 
+  @questions = Question.all
+  erb :'questions/index'
 end
 
 get '/questions/new' do
-  erb :'questions/new' 
+  erb :'questions/new'
 end
 
 get '/questions/:id' do
-  @question = Question.find(params[:id]) 
-  erb :'questions/show' 
+  @question = Question.find(params[:id])
+  erb :'questions/show'
 
 end
 
 
 get '/questions/:id/edit' do
-  @question = Question.find(params[:id]) 
-  erb :'questions/edit' 
+  @question = Question.find(params[:id])
+  erb :'questions/edit'
 end
 
 post '/questions' do
@@ -41,11 +41,11 @@ end
 
 put '/questions/:id' do
   @question = Question.find(params[:id])
-  @question.assign_attributes(params[:question]) 
-  if @question.save 
-    redirect '/questions' 
+  @question.assign_attributes(params[:question])
+  if @question.save
+    redirect '/questions'
   else
-    erb :'questions/edit' 
+    erb :'questions/edit'
   end
 
 end
@@ -54,7 +54,7 @@ end
 
 delete '/questions/:id' do
   @question = Question.find(params[:id])
-  @question.destroy 
-  redirect '/questions' 
+  @question.destroy
+  redirect '/questions'
 end
 

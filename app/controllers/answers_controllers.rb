@@ -13,8 +13,10 @@ end
 post '/questions/:question_id/answers' do
   @question = Question.find(params[:question_id])
   answer = @question.answers.new(content: params[:content])
-  #set answer user to current session user before saving
-  answer.save
+  if current_user
+    answer.answerer = current_user
+    answer.save
+  end
   redirect "/questions/#{@question.id}"
 end
 
