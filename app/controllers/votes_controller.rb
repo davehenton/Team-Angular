@@ -1,15 +1,41 @@
-get '/responses/:response_id/votes' do 
-  @response = Response.find(params[:response_id])
-  @votes = @response.votes
-  erb :'votes/index'
+post '/questions/:question_id/upvotes' do
+  if current_user && !current_user.votes.include?(Vote.find_by(voter_id: current_user.id, votable_type: "Question", votable_id: params[:question_id]))
+    current_user.votes << Vote.create(upvote?: true, votable_type: "Question", votable_id: params[:question_id])
+  end
+  redirect "/questions/#{params[:question_id]}"
 end
 
-post '/responses/:response_id/votes' do
-  @response = Response.find(params[:response_id])
-  @vote = @response.votes.new(params[:vote])
-  if @vote.save
-    redirect "/responses/#{@response.id}/votes"
-  else
-    erb :'votes/new' #show new votes view again(potentially displaying errors)
+post '/questions/:question_id/downvotes' do
+  if current_user && !current_user.votes.include?(Vote.find_by(voter_id: current_user.id, votable_type: "Question", votable_id: params[:question_id]))
+    current_user.votes << Vote.create(upvote?: false, votable_type: "Question", votable_id: params[:question_id])
   end
+  redirect "/questions/#{params[:question_id]}"
+end
+
+post '/questions/:question_id/responses/:response_id/upvotes' do
+  if current_user && !current_user.votes.include?(Vote.find_by(voter_id: current_user.id, votable_type: "Response", votable_id: params[:response_id]))
+    current_user.votes << Vote.create(upvote?: true, votable_type: "Response", votable_id: params[:response_id])
+  end
+  redirect "/questions/#{params[:question_id]}"
+end
+
+post '/questions/:question_id/responses/:response_id/downvotes' do
+  if current_user && !current_user.votes.include?(Vote.find_by(voter_id: current_user.id, votable_type: "Response", votable_id: params[:response_id]))
+    current_user.votes << Vote.create(upvote?: false, votable_type: "Response", votable_id: params[:response_id])
+  end
+  redirect "/questions/#{params[:question_id]}"
+end
+
+post '/questions/:question_id/answers/:answer_id/upvotes' do
+  if current_user && !current_user.votes.include?(Vote.find_by(voter_id: current_user.id, votable_type: "Answer", votable_id: params[:answer_id]))
+    current_user.votes << Vote.create(upvote?: true, votable_type: "Answer", votable_id: params[:answer_id])
+  end
+  redirect "/questions/#{params[:question_id]}"
+end
+
+post '/questions/:question_id/answers/:answer_id/downvotes' do
+  if current_user && !current_user.votes.include?(Vote.find_by(voter_id: current_user.id, votable_type: "Answer", votable_id: params[:answer_id]))
+    current_user.votes << Vote.create(upvote?: false, votable_type: "Answer", votable_id: params[:answer_id])
+  end
+  redirect "/questions/#{params[:question_id]}"
 end

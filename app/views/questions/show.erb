@@ -2,15 +2,28 @@
   <%= @question.content %><br>
   <%= @question.author.username %><br>
   <%= @question.created_at %><br>
-  <%= @question.votes.count %><br>
+  <%= @question.votes.where(upvote?: true).count - @question.votes.where(upvote?: false).count %>
+  <form action="/questions/<%= @question.id %>/upvotes" method="post">
+    <input type="submit" value="Upvote">
+  </form>
+  <form action="/questions/<%= @question.id %>/downvotes" method="post">
+    <input type="submit" value="Downvote">
+  </form>
+
   <h2>Question Responses</h2>
   <% @question.responses.each do |response| %>
     <p>
     <%= response.content %><br>
     <%= response.responder.username %><br>
     <%= response.created_at  %><br>
-    <%= response.votes.count %>
+    <%= response.votes.where(upvote?: true).count - response.votes.where(upvote?: false).count %>
     </p>
+    <form action="/questions/<%=@question.id%>/responses/<%= response.id %>/upvotes" method="post">
+        <input type="submit" value="Upvote">
+        </form>
+      <form action="/questions/<%=@question.id%>/responses/<%= response.id %>/downvotes" method="post">
+        <input type="submit" value="Downvote">
+      </form>
   <% end %>
 <h2>Answers</h2>
 
@@ -20,15 +33,27 @@
   <%= answer.content %><br>
   <%= answer.answerer.username %><br>
   <%= answer.created_at %><br>
-  <%= answer.votes.count %><br>
+  <%= answer.votes.where(upvote?: true).count - answer.votes.where(upvote?: false).count %>
+   <form action="/questions/<%=@question.id%>/answers/<%= answer.id %>/upvotes" method="post">
+        <input type="submit" value="Upvote">
+        </form>
+      <form action="/questions/<%=@question.id%>/answers/<%= answer.id %>/downvotes" method="post">
+        <input type="submit" value="Downvote">
+    </form>
   <h4>Answer Responses</h4>
   <% answer.responses.each do |response| %>
     <p>
     <%= response.content %><br>
     <%= response.responder.username %><br>
     <%= response.created_at  %><br>
-    <%= response.votes.count %>
+    <%= response.votes.where(upvote?: true).count - response.votes.where(upvote?: false).count %>
     </p>
+      <form action="/questions/<%=@question.id%>/responses/<%= response.id %>/upvotes" method="post">
+        <input type="submit" value="Upvote">
+        </form>
+      <form action="/questions/<%=@question.id%>/responses/<%= response.id %>/downvotes" method="post">
+        <input type="submit" value="Downvote">
+      </form>
   <% end %>
 <% end %>
 
