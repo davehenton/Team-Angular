@@ -1,7 +1,6 @@
  <% @questions.each do |question| %>
 
-<%= question.title %><br>
-<%= question.content %><br>
+<a href="/questions/<%=question.id%>"><%= question.title %></a><br>
 <%= question.author.username %><br>
 
 <% end %>
