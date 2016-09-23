@@ -1,0 +1,39 @@
+#main_header {
+	text-align: center;
+}
+
+#home_page {
+	padding: 80px;
+}
+
+#main-header {
+	font-size: 5.5em;
+}
+
+h3 {
+	font-size: 1.5em;
+}
+
+.text-form {
+	margin: auto;
+	width: 30% ;
+	padding: 40px;
+}
+
+input[type=text] {
+    padding:5px; 
+    border:2px solid #ccc; 
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+
+}
+
+input[type=submit] {
+border-radius: 3px;
+ width: 125px;
+ height: 35px;
+ border: 1px solid;
+ margin: 5px;
+ padding: 5px;
+ text-align: center;
+}
