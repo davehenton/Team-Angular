@@ -45,7 +45,14 @@ post '/questions/:question_id/responses/:response_id/downvotes' do
   if current_user && !current_user.votes.include?(Vote.find_by(voter_id: current_user.id, votable_type: "Response", votable_id: params[:response_id]))
     current_user.votes << Vote.create(upvote?: false, votable_type: "Response", votable_id: params[:response_id])
   end
-  redirect "/questions/#{params[:question_id]}"
+
+  if request.xhr?
+    response = Response.find(params[:response_id])
+    count = response.votes.where(upvote?: true).count - response.votes.where(upvote?: false).count
+    count.to_s
+  else
+    redirect "/questions/#{params[:question_id]}"
+  end
 end
 
 post '/questions/:question_id/answers/:answer_id/upvotes' do
