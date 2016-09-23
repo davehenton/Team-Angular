@@ -2,6 +2,6 @@
 <h3> Here's a list of all of the questions that <%= current_user.username %> has asked...<h3>
 
 <% current_user.questions.each do |question| %>
-  <h3><a href="questions/<%= question.id %>"><%= question.title %></a></h3>
+  <h3><a href="/questions/<%= question.id %>"><%= question.title %></a></h3>
 <% end %>
 
