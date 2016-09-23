@@ -27,6 +27,7 @@ post '/questions/:question_id/downvotes' do
 end
 
 post '/questions/:question_id/responses/:response_id/upvotes' do
+
   if current_user && !current_user.votes.include?(Vote.find_by(voter_id: current_user.id, votable_type: "Response", votable_id: params[:response_id]))
     current_user.votes << Vote.create(upvote?: true, votable_type: "Response", votable_id: params[:response_id])
   end
@@ -38,7 +39,6 @@ post '/questions/:question_id/responses/:response_id/upvotes' do
   else
     redirect "/questions/#{params[:question_id]}"
   end
-
 end
 
 post '/questions/:question_id/responses/:response_id/downvotes' do
@@ -46,7 +46,6 @@ post '/questions/:question_id/responses/:response_id/downvotes' do
     current_user.votes << Vote.create(upvote?: false, votable_type: "Response", votable_id: params[:response_id])
   end
   redirect "/questions/#{params[:question_id]}"
-
 end
 
 post '/questions/:question_id/answers/:answer_id/upvotes' do
