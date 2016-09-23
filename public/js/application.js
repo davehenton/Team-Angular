@@ -6,6 +6,8 @@ $(document).ready(function() {
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
   questionUpvoteListener();
   questionDownvoteListener();
+  responseUpvoteListener();
+  responseDownvoteListener();
 });
 
 var questionUpvoteListener = function(){
@@ -19,12 +21,42 @@ var questionUpvoteListener = function(){
     url: formURL,
     method: 'post'
   });
-
-
-   request.done(function(responseData){
+    request.done(function(responseData){
     upvoteBtn.siblings("#question_votes_count").text(responseData);
   })
  });
+};
+
+var responseUpvoteListener = function(){
+  $("#response-upvote").submit(function(e){
+    e.preventDefault();
+    var rUpvoteBtn = $(this);
+    var rFormURL = rUpvoteBtn.attr('action');
+    var request = $.ajax({
+    url: rFormURL,
+    method: 'post'
+  });
+    request.done(function(data){
+    rUpvoteBtn.siblings().children("#response_votes_count").text(data);
+   })
+  });
+};
+
+var responseDownvoteListener = function(){
+  $("#response-downvote").submit(function(e){
+    e.preventDefault();
+    var rDownvoteBtn = $(this);
+    var rFormURL = rDownvoteBtn.attr('action');
+    console.log(rFormURL);
+
+    var request = $.ajax({
+    url: rFormURL,
+    method: 'post'
+  });
+    request.done(function(data){
+    rDownvoteBtn.siblings("p").children("#response_votes_count").text(data);
+   })
+  });
 };
 
 var questionDownvoteListener = function(){
@@ -38,9 +70,8 @@ var questionDownvoteListener = function(){
     url: formURL,
     method: 'post'
   });
-
    request.done(function(responseData){
-    downvoteBtn.siblings("#question_votes_count").text(responseData);
+   downvoteBtn.siblings("#question_votes_count").text(responseData);
   })
  });
 };

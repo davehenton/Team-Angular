@@ -26,17 +26,12 @@
     <form class="upvote" id="response-upvote" action="/questions/<%=@question.id%>/responses/<%= response.id %>/upvotes" method="post">
         <input type="submit" value="Upvote">
         </form>
-      <form class="downvote" action="/questions/<%=@question.id%>/responses/<%= response.id %>/downvotes" method="post">
+      <form class="downvote" id="response-downvote" action="/questions/<%=@question.id%>/responses/<%= response.id %>/downvotes" method="post">
         <input type="submit" value="Downvote">
       </form>
   <% end %>
 
 <h2>Answers</h2>
-
-  <% if @question.best_answer %>
-  <%= p "here is the best answer!" %>
-  <%= p @question.best_answer.content %>
-  <% end %>
 
 <% @question.answers.each do |answer| %>
   <h3>Answer</h3>
@@ -51,14 +46,6 @@
       <form class="downvote" action="/questions/<%=@question.id%>/answers/<%= answer.id %>/downvotes" method="post">
         <input type="submit" value="Downvote">
     </form>
-
-      <% if current_user %>
-        <% if current_user.id == @question.author_id %>
-          <form action="/questions/<%= @question.id %>/answers/<%= answer.id %>/best_answer" method="post">
-          <input type="submit" value="Best Answer">
-          </form>
-        <% end %>
-      <% end %>
 
     <form method="post" action="/questions/<%= @question.id  %>/answers/<%= answer.id %>/responses">
   <input type="text" name="content" placeholder="response">
@@ -76,7 +63,7 @@
       <form class="upvote" id="response-upvote" action="/questions/<%=@question.id%>/responses/<%= response.id %>/upvotes" method="post">
         <input type="submit" value="Upvote">
         </form>
-      <form class="downvote" action="/questions/<%=@question.id%>/responses/<%= response.id %>/downvotes" method="post">
+      <form class="downvote" id="response-downvote" action="/questions/<%=@question.id%>/responses/<%= response.id %>/downvotes" method="post">
         <input type="submit" value="Downvote">
       </form>
   <% end %>
