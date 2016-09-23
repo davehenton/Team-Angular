@@ -1,21 +1,22 @@
- <h1>DBC Overflow</h1>
+ <div id="main_header"><h1>DBC Overflow</h1></div>
 
- <% @questions.reverse.each do |question| %>
-  <a href="/questions/<%=question.id%>">
-  <h3><%= question.title %></a></h3>
-  <%= question.author.username %><br>
-  <%= question.created_at %><br>
-  Votes: <%= question.votes.where(upvote?: true).count - question.votes.where(upvote?: false).count %>
-<% end %>
+ <div id="home_page">
+ 	<% @questions.reverse.each do |question| %>
+ 	<a href="/questions/<%=question.id%>">
+ 		<h3><%= question.title %></a></h3>
+ 		<%= question.author.username %><br>
+ 		<%= question.created_at %><br>
+ 		Votes: <%= question.votes.where(upvote?: true).count - question.votes.where(upvote?: false).count %>
+ 		<% end %>
+</div>
 
-<h3>Submit a Question!</h3>
+ 		<div class="text-form">
+ 		<h3>Submit a Question!</h3>
+ 			<form action="/questions" method="POST">
+ 				<input type="text" name="title" placeholder="Title"><br>
+ 				<textarea name="content" rows="10" cols="50"></textarea><br>
+ 				<input type="submit" name="submit">
+ 			</form>
+ 		</div>
 
-<form action="/questions" method="POST">
-  <input type="text" name="title" placeholder="Title"><br>
-  <textarea name="content" rows="10" cols="50"></textarea><br>
-  <input type="submit" name="submit">
-</form>
-
-
-
-
+ 	
